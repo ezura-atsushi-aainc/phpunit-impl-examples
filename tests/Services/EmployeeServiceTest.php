@@ -11,8 +11,6 @@ final class EmployeeServiceTest extends TestCase
 {
     public function testIsNewhire_Newhire_TrueReturned()
     {
-        // $x=new Person("x",1,1);
-        // $this->assertTrue(true);
         $service = new EmployeeService();
         $result = $service->isNewhire(new Employee(
             new Person("Letro Taro", 22, BloodType::RH_PLUS_A),
