@@ -8,6 +8,6 @@ final class EmployeeService
 {
     public function isNewhire(Employee $employee)
     {
-        return $employee->getJoinedDate() > (new DateTime())->modify("-1 year");
+        return $employee->getJoinedDate() > (new \DateTime())->modify("-1 year");
     }
 }
