@@ -3,11 +3,12 @@
 namespace App\Services;
 
 use App\Entities\Employee;
+use App\Enums\Health;
 
 final class EmployeeService
 {
-    public function isNewhire(Employee $employee)
+    public function needMedicalCheckUp(Employee $employee)
     {
-        return $employee->getJoinedDate() > (new \DateTime())->modify("-1 year");
+        return $employee->getAge() >= Health::AGE_NEED_HEALTH_CHECK_UP;
     }
 }

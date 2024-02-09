@@ -12,14 +12,16 @@ final class Employee
     /** @var Profile */
     private $profile;
 
+    public const RETIREMENT_AGE = 60;
+
     public function __construct(Person $person, Profile $profile)
     {
         $this->person = $person;
         $this->profile = $profile;
     }
 
-    public function getJoinedDate(): \DateTime
+    public function getAge(): int
     {
-        return $this->profile->joined();
+        return $this->person->age();
     }
 }
