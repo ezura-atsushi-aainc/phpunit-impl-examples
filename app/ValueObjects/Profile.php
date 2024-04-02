@@ -2,25 +2,31 @@
 
 namespace App\ValueObjects;
 
+use App\ValueObjects\Grade;
+use App\ValueObjects\OrgPosition;
+
 final class Profile
 {
-    /** @var string */
-    private $division;
+    /** @var OrgPosition */
+    private $orgPosition;
     /** @var int */
     private $officeNumber;
     /** @var \DateTime */
     private $joined;
+    /** @var Grade */
+    private $grade;
 
-    public function __construct(string $division, int $officeNumber, \DateTime $joined)
+    public function __construct(OrgPosition $orgPosition, int $officeNumber, \DateTime $joined, Grade $grade)
     {
-        $this->division = $division;
+        $this->orgPosition = $orgPosition;
         $this->officeNumber = $officeNumber;
         $this->joined = $joined;
+        $this->grade = $grade;
     }
 
-    public function division(): string
+    public function orgPosition(): OrgPosition
     {
-        return $this->division;
+        return $this->orgPosition;
     }
 
     public function officeNumber(): int
@@ -31,5 +37,10 @@ final class Profile
     public function joined(): \DateTime
     {
         return $this->joined;
+    }
+
+    public function grade(): Grade
+    {
+        return $this->grade;
     }
 }
