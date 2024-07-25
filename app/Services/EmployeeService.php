@@ -30,6 +30,14 @@ final class EmployeeService
         if (count($leaderOfDepartment) === 0) {
             return null;
         }
-        return array_pop(array_values($leaderOfDepartment))->getName();
+        return (array_values($leaderOfDepartment)[0])->getName();
+    }
+
+    public function countBelongToPersonelDepartment(array $employees): int
+    {
+        $belongToPersonel = array_filter($employees, function ($employee) {
+            return $employee->getOrgPosition()->department() === "Personel";
+        });
+        return count($belongToPersonel);
     }
 }

@@ -106,6 +106,32 @@ final class EmployeeServiceTest extends TestCase
         return $this->createEmployeeList($employees);
     }
 
+    /**
+     * @dataProvider dataEmployeesWithinSomeDepartmentsProvider
+     *
+     * @return void
+     */
+    public function testCountBelongToPersonelDepartment_BelongPersonelTwoEmployees_CountTwoReturned(array $employeesBelongToEachDevelopments): void
+    {
+        $service = new EmployeeService();
+        $actualCount = $service->countBelongToPersonelDepartment($employeesBelongToEachDevelopments);
+
+        $this->assertEquals(2, $actualCount);
+    }
+
+    public function dataEmployeesWithinSomeDepartmentsProvider(): array
+    {
+        $employees = [
+            ["Tom",   23, BloodType::RH_PLUS_A,  "Software Development", Role::STAFF,   403, "2022-04-01", new Grade(Grade::C)],
+            ["Nancy", 22, BloodType::RH_PLUS_O,  "Software Development", Role::STAFF,   403, "2023-04-01", new Grade(Grade::C)],
+            ["Sara",  44, BloodType::RH_PLUS_A,  "Personel",             Role::MANAGER, 202, "2009-06-11", new Grade(Grade::A)],
+            ["Alice", 31, BloodType::RH_PLUS_B,  "Software Development", Role::STAFF,   403, "2019-12-05", new Grade(Grade::C)],
+            ["Bob",   27, BloodType::RH_PLUS_AB, "Software Development", Role::STAFF,   403, "2020-09-16", new Grade(Grade::C)],
+            ["Yulia", 35, BloodType::RH_PLUS_O,  "Personel",             Role::STAFF,   202, "2011-05-07", new Grade(Grade::B)],
+        ];
+        return $this->createEmployeeList($employees);
+    }
+
     private function createEmployeeList(array $employees): array
     {
         $employeeList = [];
